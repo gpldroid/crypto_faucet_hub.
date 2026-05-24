@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Faucet Hub</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Tahoma,sans-serif}
+body{
+    background:#0b1220;
+    color:#fff;
+    overflow-x:hidden;
+}
+header{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    padding:25px;
+    text-align:center;
+    box-shadow:0 4px 20px rgba(0,0,0,.4);
+}
+header h1{
+    font-size:38px;
+    color:#38bdf8;
+}
+header p{
+    margin-top:10px;
+    color:#cbd5e1;
+}
+.slider{
+    width:95%;
+    margin:30px auto;
+    overflow:hidden;
+    border-radius:18px;
+    background:#111827;
+    padding:20px;
+}
+.slide-track{
+    display:flex;
+    gap:20px;
+    animation:scroll 20s linear infinite;
+}
+.slide{
+    min-width:260px;
+    background:#1e293b;
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
+    transition:.3s;
+}
+.slide:hover{
+    transform:translateY(-5px);
+    background:#334155;
+}
+.slide a{
+    text-decoration:none;
+    color:#38bdf8;
+    font-weight:bold;
+}
+@keyframes scroll{
+    0%{transform:translateX(0)}
+    100%{transform:translateX(-50%)}
+}
+
+.container{
+    width:95%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px 0;
+}
+.card{
+    background:#111827;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:.3s;
+    box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+.card:hover{
+    transform:translateY(-8px);
+}
+.coin-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+.card h2{
+    margin-bottom:10px;
+}
+.ref-link{
+    background:#0f172a;
+    padding:10px;
+    border-radius:10px;
+    margin:12px 0;
+    font-size:13px;
+    word-break:break-all;
+    color:#94a3b8;
+}
+.claim-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#06b6d4,#3b82f6);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+.claim-btn:hover{
+    transform:scale(1.05);
+}
+footer{
+    background:#020617;
+    padding:30px 20px;
+    text-align:center;
+    margin-top:40px;
+}
+.footer-links{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:15px;
+}
+.footer-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+}
+.footer-links a:hover{
+    color:#38bdf8;
+}
+.social-buttons{
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+}
+.telegram-btn,.top-btn{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:24px;
+    text-decoration:none;
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+.telegram-btn{background:#229ED9;}
+.top-btn{background:#3b82f6;}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Crypto Faucet Hub</h1>
+    <p>أفضل مواقع ربح العملات الرقمية المجانية بروابط الإحالة</p>
+</header>
+
+<section class="slider">
+    <div class="slide-track">
+        <div class="slide"><a href="#">FreeBitcoin</a><p>ربح البيتكوين يومياً</p></div>
+        <div class="slide"><a href="#">FaucetPay</a><p>محفظة وتجميع العملات</p></div>
+        <div class="slide"><a href="#">Cointiply</a><p>مهام وربح مجاني</p></div>
+        <div class="slide"><a href="#">Fire Faucet</a><p>Auto Claim</p></div>
+        <div class="slide"><a href="#">RollerCoin</a><p>محاكاة التعدين</p></div>
+        <div class="slide"><a href="#">FreeBitcoin</a><p>ربح البيتكوين يومياً</p></div>
+        <div class="slide"><a href="#">FaucetPay</a><p>محفظة وتجميع العملات</p></div>
+    </div>
+</section>
+
+<section class="container" id="coins-container"></section>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">اتصل بنا</a>
+        <a href="#">من نحن</a>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">سياسة الاستخدام</a>
+        <a href="#">خارطة الموقع</a>
+    </div>
+    <p>© 2026 Crypto Faucet Hub - جميع الحقوق محفوظة</p>
+</footer>
+
+<div class="social-buttons">
+    <a href="https://t.me/yourchannel" class="telegram-btn" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+    <a href="#" class="top-btn" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+<script>
+const coins = [
+    {name:"Bitcoin", icon:"₿", ref:"https://example.com/btc-ref"},
+    {name:"Ethereum", icon:"Ξ", ref:"https://example.com/eth-ref"},
+    {name:"Dogecoin", icon:"Ð", ref:"https://example.com/doge-ref"},
+    {name:"Litecoin", icon:"Ł", ref:"https://example.com/ltc-ref"},
+    {name:"Solana", icon:"◎", ref:"https://example.com/sol-ref"},
+    {name:"BNB", icon:"🟡", ref:"https://example.com/bnb-ref"},
+    {name:"Tron", icon:"🔺", ref:"https://example.com/trx-ref"},
+    {name:"USDT", icon:"💲", ref:"https://example.com/usdt-ref"},
+    {name:"Polygon", icon:"⬣", ref:"https://example.com/matic-ref"},
+    {name:"XRP", icon:"✕", ref:"https://example.com/xrp-ref"},
+    {name:"Cardano", icon:"◉", ref:"https://example.com/ada-ref"},
+    {name:"Toncoin", icon:"💠", ref:"https://example.com/ton-ref"}
+];
+
+const container = document.getElementById("coins-container");
+
+coins.forEach(coin=>{
+    container.innerHTML += `
+    <div class="card">
+        <div class="coin-icon">${coin.icon}</div>
+        <h2>${coin.name}</h2>
+        <div class="ref-link">${coin.ref}</div>
+        <a href="${coin.ref}" class="claim-btn" target="_blank">Claim</a>
+    </div>`;
+});
+
+document.getElementById("backToTop").addEventListener("click", function(e){
+    e.preventDefault();
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+});
+</script>
+
+</body>
+</html>
