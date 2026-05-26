@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ClaimFreeCoins | منصة أرباح العملات الرقمية</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #0a0e1c;
+      color: #eef2ff;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scroll */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111827;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f7931a;
+      border-radius: 12px;
+    }
+
+    /* container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    .header {
+      background: #070b17;
+      border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      backdrop-filter: blur(10px);
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFB347, #FF8C00);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+    .telegram-btn {
+      background: #1e293b;
+      padding: 10px 22px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      border: 1px solid #f7931a55;
+    }
+    .telegram-btn i {
+      color: #27a0e0;
+      font-size: 1.3rem;
+    }
+    .telegram-btn:hover {
+      background: #f7931a;
+      border-color: #ffae4a;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(145deg, #0e1428, #030617);
+      padding: 60px 0 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(247, 147, 26, 0.2);
+    }
+    .hero-banner h2 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    .hero-banner p {
+      color: #b9c3e6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* slider section (مواقع توزيع العملات) */
+    .slider-section {
+      padding: 60px 0 40px;
+      background: #0b1020;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.9rem;
+      margin-bottom: 30px;
+      font-weight: 700;
+      position: relative;
+    }
+    .section-title:after {
+      content: '';
+      width: 80px;
+      height: 3px;
+      background: #f7931a;
+      display: block;
+      margin: 12px auto 0;
+      border-radius: 6px;
+    }
+    .slider-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 32px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,140,0,0.2);
+    }
+    .slider-wrapper {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide-card {
+      min-width: 100%;
+      padding: 40px 20px;
+      text-align: center;
+      background: #10172dee;
+    }
+    .slide-card i {
+      font-size: 3rem;
+      color: #ffaa33;
+      margin-bottom: 15px;
+    }
+    .slide-card h3 {
+      font-size: 1.8rem;
+      margin: 10px 0;
+    }
+    .slide-card p {
+      color: #cbd5e6;
+      margin-bottom: 25px;
+    }
+    .slide-btn {
+      background: linear-gradient(95deg, #f7931a, #ffb347);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 700;
+      color: #0a0e1c;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .slide-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 18px rgba(247,147,26,0.3);
+    }
+    .slider-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .slider-buttons button {
+      background: #1e2a47;
+      border: none;
+      color: #ffb347;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .slider-buttons button:hover {
+      background: #f7931a;
+      color: #000;
+    }
+
+    /* coins grid - مع رابط إحالة وزر claim */
+    .coins-section {
+      padding: 60px 0;
+      background: #070c1a;
+    }
+    .coins-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+    .coin-card {
+      background: rgba(20, 30, 55, 0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 32px;
+      padding: 24px;
+      border: 1px solid rgba(247,147,26,0.2);
+      transition: transform 0.2s, border-color 0.2s;
+      text-align: center;
+    }
+    .coin-card:hover {
+      transform: translateY(-5px);
+      border-color: #f7931a;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+    }
+    .coin-icon {
+      font-size: 3.5rem;
+      margin-bottom: 12px;
+    }
+    .coin-name {
+      font-size: 1.9rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+    .coin-desc {
+      font-size: 0.8rem;
+      color: #9aa7c9;
+      margin-bottom: 15px;
+    }
+    .ref-link {
+      background: #0b1122;
+      padding: 12px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      direction: ltr;
+      font-family: monospace;
+      margin: 12px 0;
+      border: 1px solid #2d3a5e;
+      word-break: break-all;
+      color: #b9d0ff;
+    }
+    .claim-btn {
+      background: linear-gradient(90deg, #f7931a, #fdba6a);
+      border: none;
+      width: 100%;
+      padding: 14px 0;
+      border-radius: 40px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: #0a0c1a;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 6px;
+    }
+    .claim-btn i {
+      margin-left: 8px;
+    }
+    .claim-btn:hover {
+      filter: brightness(1.05);
+      transform: scale(0.98);
+      box-shadow: 0 0 12px #ffaa33;
+    }
+
+    /* Footer */
+    footer {
+      background: #030612;
+      border-top: 1px solid #1e2a3e;
+      padding: 45px 20px 30px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+    .footer-links a {
+      color: #bfc9f0;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a i {
+      font-size: 0.9rem;
+      color: #f7931a;
+    }
+    .footer-links a:hover {
+      color: #ffb347;
+      transform: translateY(-2px);
+    }
+    .copyright {
+      text-align: center;
+      color: #5f6c97;
+      font-size: 0.8rem;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 25px;
+      background: #f7931a;
+      color: #111;
+      width: 50px;
+      height: 50px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      cursor: pointer;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: none;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      background: #ffaa44;
+      transform: translateY(-4px);
+    }
+    /* زر تليغرام ثابت جانبي؟ المستخدم طلب زر قناة تليغرام موجود بالفعل بالهيدر، لكني سأضيف أيقونة عائمة اختيارية؟ حسب الطلب موجود بالهيدر. كما يمكن إضافة فلوتينج بسيط. لكن الهيدر فيه Telegram زر واضح */
+    .floating-telegram {
+      position: fixed;
+      bottom: 30px;
+      right: 25px;
+      background: #1f8a4c;
+      background: #27a0e0;
+      width: 52px;
+      height: 52px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: 0.2s;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .floating-telegram:hover {
+      transform: scale(1.07);
+      background: #0f6eab;
+    }
+    @media (max-width: 700px) {
+      .logo h1 { font-size: 1.4rem; }
+      .hero-banner h2 { font-size: 1.8rem; }
+      .coin-name { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container logo-area">
+      <div class="logo">
+        <h1><i class="fas fa-coins"></i> ClaimFreeCoins</h1>
+        <p>اربح عملات رقمية مجانية يومياً</p>
+      </div>
+      <a href="https://t.me/+YourChannel" target="_blank" class="telegram-btn" id="telegramHeaderBtn">
+        <i class="fab fa-telegram"></i> انضم لقناة التليغرام
+      </a>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="container">
+      <h2>🔥 أفضل منصة للمطالبة بالعملات الرقمية 🔥</h2>
+      <p>احصل على بيتكوين، إيثيريوم، دوجكوين والمزيد عبر روابط إحالة حصرية. انقر على "Claim" وابدأ الربح اليوم!</p>
+    </div>
+  </section>
+
+  <!-- سلايدر مواقع ربح العملات -->
+  <section class="slider-section">
+    <div class="container">
+      <div class="section-title">✨ مواقع موثوقة لربح العملات الرقمية ✨</div>
+      <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+          <div class="slide-card">
+            <i class="fab fa-fa fa-bitcoin"></i>
+            <h3>FreeBitco.in</h3>
+            <p>أشهر موقع لربح البيتكوين المجاني، مكافآت كل ساعة وألعاب وعوائد مرتفعة.</p>
+            <button class="slide-btn" data-url="https://freebitco.in/?r=example">زيارة الموقع <i class="fas fa-external-link-alt"></i></button>
+          </div>
+          <div class="slide-card">
+            <i class="fab fa-ethereum"></i>
+            <h3>Cointiply</h3>
+            <p>اربح عملات رقمية متعددة عبر المهام، العاب، واستثمار فوري. موثوق بأكثر من 2 مليون مستخدم.</p>
+            <button class="slide-btn" data-url="https://cointiply.com/r/ref">زيارة الموقع <i class="fas fa-external-link-alt"></i></button>
+          </div>
+          <div class="slide-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>FireFaucet</h3>
+            <p>أكثر من 30 عملة رقمية، صرف فوري ومكافآت يومية، يدعم عدة شبكات.</p>
+            <button class="slide-btn" data-url="https://firefaucet.win/ref/example">زيارة الموقع <i class="fas fa-external-link-alt"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="slider-buttons">
+        <button id="prevSlide"><i class="fas fa-chevron-right"></i></button>
+        <button id="nextSlide"><i class="fas fa-chevron-left"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- قائمة العملات مع رابط احالة وزر claim -->
+  <section class="coins-section">
+    <div class="container">
+      <div class="section-title">🪙 أنواع العملات الرقمية – إحصل على مكافآتك 🪙</div>
+      <div class="coins-grid" id="coinsGrid"></div>
+    </div>
+  </section>
+
+  <!-- الفوتر مع صفحات أساسية -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
+        <a href="#"><i class="fas fa-info-circle"></i> من نحن</a>
+        <a href="#"><i class="fas fa-lock"></i> سياسة الخصوصية</a>
+        <a href="#"><i class="fas fa-file-signature"></i> سياسة الاستخدام</a>
+        <a href="#"><i class="fas fa-sitemap"></i> خارطة الموقع</a>
+      </div>
+      <div class="copyright">
+        <i class="far fa-copyright"></i> 2026 ClaimFreeCoins – جميع الحقوق محفوظة. هذه المنصة لعرض الروابط الإحالة والتعريف بمصادر ربح العملات الرقمية.
+      </div>
+    </div>
+  </footer>
+
+  <!-- زر العودة لأعلى الصفحة -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+  <!-- زر تليغرام عائم إضافي (تأكيد) -->
+  <a href="https://t.me/+YourChannel" target="_blank" class="floating-telegram" id="floatingTelegram" style="text-decoration: none;">
+    <i class="fab fa-telegram"></i>
+  </a>
+
+  <script>
+    // ---------- SLIDER LOGIC ----------
+    const sliderWrapper = document.getElementById('sliderWrapper');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide-card');
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+      if (sliderWrapper) {
+        sliderWrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
+      }
+    }
+    function nextSlide() {
+      slideIndex = (slideIndex + 1) % totalSlides;
+      updateSlider();
+    }
+    function prevSlide() {
+      slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    // optional auto slide every 5 sec
+    let autoInterval = setInterval(nextSlide, 5500);
+    const sliderContainer = document.querySelector('.slider-container');
+    if(sliderContainer) {
+      sliderContainer.addEventListener('mouseenter', () => clearInterval(autoInterval));
+      sliderContainer.addEventListener('mouseleave', () => { autoInterval = setInterval(nextSlide, 5500); });
+    }
+
+    // زر السلايدر يفتح الرابط
+    document.querySelectorAll('.slide-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const url = btn.getAttribute('data-url');
+        if(url) window.open(url, '_blank');
+        else alert('رابط تجريبي، سيتم إضافة الرابط قريباً');
+      });
+    });
+
+    // ---------- بيانات العملات (رابط احالة + عملات متنوعة) ----------
+    const coinsData = [
+      { name: "Bitcoin (BTC)", icon: "fa-btc", desc: "أشهر عملة رقمية, أرباح ثابتة", refLink: "https://freebitco.in/?r=claimfree_example", reward: "0.00005 BTC" },
+      { name: "Ethereum (ETH)", icon: "fa-ethereum", desc: "عقود ذكية وربح لامركزي", refLink: "https://example.eth/ref=join", reward: "0.002 ETH" },
+      { name: "Dogecoin (DOGE)", icon: "fa-dogecoin", desc: "عملة الميم الشهيرة بمكافآت كبيرة", refLink: "https://dogefaucet.com/?ref=doge2026", reward: "5 DOGE" },
+      { name: "Litecoin (LTC)", icon: "fa-chart-line", desc: "سريعة ورسوم منخفضة", refLink: "https://litecoinfaucet.io/ref/ltc24", reward: "0.03 LTC" },
+      { name: "Solana (SOL)", icon: "fa-bolt", desc: "بلوكشين فائق السرعة", refLink: "https://solclaim.xyz/?ref=solana_promo", reward: "0.12 SOL" },
+      { name: "BNB (Binance)", icon: "fa-chart-simple", desc: "عملة بينانس الذكية", refLink: "https://bnbclaim.biz/ref/bsc2026", reward: "0.008 BNB" },
+      { name: "Ripple (XRP)", icon: "fa-water", desc: "مدفوعات رقمية فورية", refLink: "https://xrpdrop.io/ref/xrpfan", reward: "2 XRP" },
+      { name: "TRON (TRX)", icon: "fa-sun", desc: "محتوى لا مركزي وعوائد", refLink: "https://tronget.net/ref/claimnow", reward: "50 TRX" }
+    ];
+
+    const gridContainer = document.getElementById('coinsGrid');
+    if(gridContainer) {
+      coinsData.forEach(coin => {
+        const coinCard = document.createElement('div');
+        coinCard.className = 'coin-card';
+        // icon fontawesome class dynamic
+        let iconClass = `fab ${coin.icon}`;
+        if(coin.icon === 'fa-water') iconClass = 'fas fa-water';
+        if(coin.icon === 'fa-sun') iconClass = 'fas fa-sun';
+        if(coin.icon === 'fa-bolt') iconClass = 'fas fa-bolt';
+        if(coin.icon === 'fa-chart-simple') iconClass = 'fas fa-chart-simple';
+        if(coin.icon === 'fa-chart-line') iconClass = 'fas fa-chart-line';
+        
+        coinCard.innerHTML = `
+          <div class="coin-icon"><i class="${iconClass}"></i></div>
+          <div class="coin-name">${coin.name}</div>
+          <div class="coin-desc">${coin.desc} | مكافأة: ${coin.reward}</div>
+          <div class="ref-link" dir="ltr">🔗 رابط الإحالة: ${coin.refLink.substring(0, 50)}${coin.refLink.length > 50 ? '...' : ''}</div>
+          <button class="claim-btn" data-ref="${coin.refLink}" data-coin="${coin.name}"><i class="fas fa-gift"></i> Claim الآن</button>
+        `;
+        gridContainer.appendChild(coinCard);
+      });
+
+      // إضافة حدث الـ Claim لكل الأزرار
+      document.querySelectorAll('.claim-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const refLink = btn.getAttribute('data-ref');
+          const coinName = btn.getAttribute('data-coin');
+          // فتح رابط الإحالة في نافذة جديدة
+          if(refLink && refLink !== '#') {
+            window.open(refLink, '_blank');
+            alert(`✨ جارٍ توجيهك إلى ${coinName} عبر رابط الإحالة ✨\nأكمل التسجيل لتحصل على المكافأة!`);
+          } else {
+            alert('رابط الإحالة جاهز قريباً، تابع قناتنا ليصلك الجديد!');
+          }
+        });
+      });
+    }
+
+    // ---- back to top button logic ----
+    const backTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 400) {
+        backTopBtn.classList.add('show');
+      } else {
+        backTopBtn.classList.remove('show');
+      }
+    });
+    backTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // زر التليغرام الموجود في الهيدر + العائم يعملان، نضيف أحداث متابعة للتوضيح
+    const tgBtns = document.querySelectorAll('.telegram-btn, .floating-telegram');
+    tgBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        // نسمح بالفتح الطبيعي ولكن يمكن تتبع
+        console.log('فتح قناة تليغرام');
+      });
+    });
+
+    // إضافة تأثيرات للروابط في الفوتر
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    footerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert(`📄 صفحة "${link.innerText}" سيتم إطلاقها قريباً، تابعنا للمزيد.`);
+      });
+    });
+
+    // تنبيه تجريبي عند النقر على "من نحن" او سياسة الخصوصية بطريقة ودية
+    // تحديث بسيط لعرض روابط الإحالة بشكل كامل عند الضغط على النسخ ? لا داعي لكن جيد
+    // إضافة نسخ احتياطية للروابط (اختياري)
+  </script>
+</body>
+</html>
